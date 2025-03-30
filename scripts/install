@@ -21,11 +21,21 @@ chown -R "$app:www-data" "$install_dir"
 #=================================================
 ynh_script_progression "Building $app..."
 
+ls -la
+
 ynh_go_install 
 
+ls -la
+
 pushd $install_dir/build/
+    # Tweak to support subpath install
+    sed -ri "s/(mux.Handle\(\"GET \/)/\1$path\//g" main.go
+
+    # Build
 	ynh_hide_warnings ynh_exec_as_app go build -o $install_dir/
 popd
+
+ls -la
 
 ynh_go_remove
 ynh_safe_rm "$install_dir/build/"
