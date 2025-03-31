@@ -8,6 +8,16 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
+# INITIALIZE AND STORE SETTINGS
+#=================================================
+
+passed_max_length=12288
+ynh_app_setting_set --key=passed_max_length --value=$passed_max_length
+
+passed_store_clear_interval=300
+ynh_app_setting_set --key=passed_store_clear_interval --value=$clear_interval
+
+#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression "Setting up source files..."
@@ -44,8 +54,6 @@ pushd $install_dir/build/
     sed -i "s|=\"/\([^>]\)|=\"${path%/}/\1|g" static/index.html
     sed -i "s|\(const res = await fetch(.\)/|\1${path%/}/|g" static/js/lang.js
     sed -i "s|\(const res = await fetch(.\)/|\1${path%/}/|g" static/js/api.js
-
-    cat main.go
 
     # Build
 	ynh_hide_warnings ynh_exec_as_app go build -o $install_dir/

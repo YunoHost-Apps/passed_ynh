@@ -1,0 +1,28 @@
+#:schema https://github.com/YunoHost/apps/raw/master/schemas/config_panel.v1.schema.json
+
+version = "1.0"
+
+[main]
+name.en = "Main configuration"
+name.fr = "Configuration principale"
+   
+    [main.administration]
+    name.en = "Administration"
+    name.fr = "Administration"
+    optional = true
+ 
+        [main.administration.passed_max_length]
+        ask.en = "Max password length (bytes)"
+        ask.fr = "Taille maximale des mots de passe (octet)"
+        type = "number"
+        bind = ":__INSTALL_DIR__/.env"
+        help.en = "Default setting = 12288 (=12kb)"
+        help.fr = "Réglage par défaut = 12288 (=12ko)"
+
+        [main.administration.passed_store_clear_interval]
+        ask.en = "Expired entries clear interval (seconds)"
+        ask.fr = "Intervalle de nettoyage des entrées expirées (secondes)"
+        type = "number"
+        bind = ":__INSTALL_DIR__/.env"
+        help.en = "Default setting = 300 (5mn)"
+        help.fr = "Réglage par défaut = 300 (5mn)"
