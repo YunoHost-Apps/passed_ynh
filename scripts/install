@@ -44,6 +44,7 @@ pushd $install_dir/build/
     sed -i '/FileServerFS/a mux.Handle(subpath+"/", http.StripPrefix(subpath, fs))' main.go 
     sed -i '/FileServerFS/a fs := http.FileServer(http.FS(staticFS))' main.go
     sed -i '/FIleServerFS/d' main.go 
+    sed -i "s|=\"/\([^>]\)|=\"${path%/}/\1|g" static/index.html
 
     # Build
 	ynh_hide_warnings ynh_exec_as_app go build -o $install_dir/
