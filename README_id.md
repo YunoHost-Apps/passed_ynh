@@ -18,9 +18,9 @@ Ini TIDAK boleh diedit dengan tangan.
 
 ## Ringkasan
 
-Share a password with someone securely by generating single-use URLs so that it doesn't logged in a mailbox, shown in a messenger app's notification, etc. 
+Share a password with someone securely by generating single-use URLs so that it doesn't get logged in a mailbox, shown in a messenger app's notification, etc. 
 
-The password is contained in the URL itself in an encrypted form whereas the decryption key stored on the server is deleted after first use or selected timeframe. 
+The password is contained in the URL itself as an encrypted string whereas the decryption key stored on the server is deleted after first use or selected timeframe. 
 
 
 **Versi terkirim:** 2024.12.29~ynh1
@@ -31,7 +31,6 @@ The password is contained in the URL itself in an encrypted form whereas the dec
 
 ## Dokumentasi dan sumber daya
 
-- Website aplikasi resmi: <https://git.1e99.eu/1e99/passed>
 - Dokumentasi pengguna resmi: <https://git.1e99.eu/1e99/passed/src/branch/main/README.md#how-it-works>
 - Dokumentasi admin resmi: <https://git.1e99.eu/1e99/passed/src/branch/main/README.md#configuration>
 - Depot kode aplikasi hulu: <https://git.1e99.eu/1e99/passed>

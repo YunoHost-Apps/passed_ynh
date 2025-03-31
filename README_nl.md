@@ -18,9 +18,9 @@ Hij mag NIET handmatig aangepast worden.
 
 ## Overzicht
 
-Share a password with someone securely by generating single-use URLs so that it doesn't logged in a mailbox, shown in a messenger app's notification, etc. 
+Share a password with someone securely by generating single-use URLs so that it doesn't get logged in a mailbox, shown in a messenger app's notification, etc. 
 
-The password is contained in the URL itself in an encrypted form whereas the decryption key stored on the server is deleted after first use or selected timeframe. 
+The password is contained in the URL itself as an encrypted string whereas the decryption key stored on the server is deleted after first use or selected timeframe. 
 
 
 **Geleverde versie:** 2024.12.29~ynh1
@@ -31,7 +31,6 @@ The password is contained in the URL itself in an encrypted form whereas the dec
 
 ## Documentatie en bronnen
 
-- Officiele website van de app: <https://git.1e99.eu/1e99/passed>
 - Officiele gebruikersdocumentatie: <https://git.1e99.eu/1e99/passed/src/branch/main/README.md#how-it-works>
 - Officiele beheerdersdocumentatie: <https://git.1e99.eu/1e99/passed/src/branch/main/README.md#configuration>
 - Upstream app codedepot: <https://git.1e99.eu/1e99/passed>

@@ -31,7 +31,6 @@ Le mot de passe est contenu dans l'URL elle-même sous une forme chiffrée, tand
 
 ## Documentations et ressources
 
-- Site officiel de l’app : <https://git.1e99.eu/1e99/passed>
 - Documentation officielle utilisateur : <https://git.1e99.eu/1e99/passed/src/branch/main/README.md#how-it-works>
 - Documentation officielle de l’admin : <https://git.1e99.eu/1e99/passed/src/branch/main/README.md#configuration>
 - Dépôt de code officiel de l’app : <https://git.1e99.eu/1e99/passed>
