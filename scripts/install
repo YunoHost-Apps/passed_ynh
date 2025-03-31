@@ -38,9 +38,6 @@ pushd $install_dir/build/
     sed -i '/trimmedSubpath = ""/a \\t} else {' main.go
     sed -i '/^\t\ttrimmedSubpath = subpath/a \\t}' main.go
     sed -i '/^\tlog.Printf("Listening on/a \\tlog.Printf("URL path: %s", subpath)' main.go
-    sed -i '/^\tlog.Printf("Listening on/a \\tlog.Printf("Debug3: %s", strHeadApiPwId)' main.go
-    sed -i '/^\tlog.Printf("Listening on/a \\tlog.Printf("Debug2: %s", strGetApiPwId)' main.go
-    sed -i '/^\tlog.Printf("Listening on/a \\tlog.Printf("Debug1: %s", strPostApiPw)' main.go
     sed -i '/FileServerFS/a \\tmux.Handle(subpath+"/", http.StripPrefix(subpath, fs))' main.go 
     sed -i '/FileServerFS/a \\tfs := http.FileServer(http.FS(staticFS))' main.go
     sed -i '/FIleServerFS/d' main.go
