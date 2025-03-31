@@ -59,7 +59,7 @@ pushd $install_dir/build/
     ynh_hide_warnings ynh_exec_as_app go build -o $install_dir/
 popd
 
-cp -r "$install_dir/build/static" "$install_dir"
+cp -r "$install_dir/build/static/*" "$install_dir"
 
 chmod +x "$install_dir/passed"
 
