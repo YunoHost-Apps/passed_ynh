@@ -21,11 +21,7 @@ chown -R "$app:www-data" "$install_dir"
 #=================================================
 ynh_script_progression "Building $app..."
 
-ls -la $install_dir
-
 ynh_go_install 
-
-ls -la $install_dir
 
 pushd $install_dir/build/
     # Tweak upstream code to add support for subpath install via creation of PASSED_SUBPATH env variable (defaulting to "/")
@@ -45,14 +41,12 @@ pushd $install_dir/build/
     sed -i '/FileServerFS/a fs := http.FileServer(http.FS(staticFS))' main.go
     sed -i '/FIleServerFS/d' main.go 
     sed -i "s|=\"/\([^>]\)|=\"${path%/}/\1|g" static/index.html
-    sed -i "s|\(const res = await fetch(.?\)/|\1${path%/}/|g" static/js/lang.js
-    sed -i "s|\(const res = await fetch(.?\)/|\1${path%/}/|g" static/js/api.js
+    sed -i "s|\(const res = await fetch(.\)/|\1${path%/}/|g" static/js/lang.js
+    sed -i "s|\(const res = await fetch(.\)/|\1${path%/}/|g" static/js/api.js
 
     # Build
 	ynh_hide_warnings ynh_exec_as_app go build -o $install_dir/
 popd
-
-ls -la $install_dir
 
 ynh_go_remove
 ynh_safe_rm "$install_dir/build/"
