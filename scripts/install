@@ -41,6 +41,9 @@ pushd $install_dir/build/
     sed -i 's/"GET \/api\/password\/{id}"/str_get_api_pw_id/g' main.go 
     sed -i 's/"HEAD \/api\/password\/{id}"/str_head_api_pw_id/g' main.go
     sed -i '/^\tlog.Printf("Listening on/a \\tlog.Printf("URL path: %s", subpath)' main.go 
+    sed -i '/FileServerFS/a fs := http.FileServer(http.FS(staticFS))' main.go
+    sed -i '/FileServerFS/a mux.Handle(subpath+"/", http.StripPrefix(subpath, fs))' main.go
+    sed -i '/FIleServerFS/d' main.go 
 
     # Build
 	ynh_hide_warnings ynh_exec_as_app go build -o $install_dir/
