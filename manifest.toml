@@ -13,7 +13,6 @@ maintainers = ["oleole39"]
 
 [upstream]
 license = "MPL-2.0"
-admindoc = "https://git.1e99.eu/1e99/passed/src/branch/main/README.md#configuration"
 userdoc = "https://git.1e99.eu/1e99/passed/src/branch/main/README.md#how-it-works"
 code = "https://git.1e99.eu/1e99/passed"
 
