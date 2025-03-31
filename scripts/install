@@ -26,7 +26,8 @@ ynh_go_install
 pushd $install_dir/build/
     # Tweak upstream code to add support for subpath install via creation of PASSED_SUBPATH env variable (defaulting to "/")
     sed -i '/^import (/a \\t"fmt"' main.go #add fmt module import
-    sed -i '/^\tvar address string/i \\tvar subpath string' main.go 
+    sed -i '/^\tvar address string/i \\tvar subpath string' main.go
+    sed -i '/^\tvar subpath string/i \\tvar trimmedSubpath string' main.go
     sed -i '/env("PASSED_ADDRESS", &address, ":3000")/i \\tenv("PASSED_SUBPATH", &subpath, "/")' main.go 
     sed -i '/handler := http\.Handler(mux)/a \\tstrGetRoot := fmt.Sprintf("GET %d", subpath)' main.go
     sed -i '/strGetRoot :=/a \\tstrPostApiPw := fmt.Sprintf("POST %d/api/password", subpath)' main.go
@@ -36,13 +37,14 @@ pushd $install_dir/build/
     sed -i 's/"POST \/api\/password"/strPostApiPw/g' main.go 
     sed -i 's/"GET \/api\/password\/{id}"/strGetApiPwId/g' main.go 
     sed -i 's/"HEAD \/api\/password\/{id}"/strHeadApiPwId/g' main.go
-    sed -i '/handler := http\.Handler(mux)/a \\ttrimmedSubpath := subpath' main.go
-    sed -i '/^\ttrimmedSubpath/a \\tif trimmedSubpath === "\/" {' main.go
-    sed -i '/trimmedSubpath === "\/"/a \\t\ttrimmedSubpath := ""' main.go
-    sed -i '/trimmedSubpath := ""/a \\t}' main.go
+    sed -i '/handler := http\.Handler(mux)/a \\tif subpath == "\/" {' main.go
+    sed -i '/^\tif subpath == "\/"/a \\t\ttrimmedSubpath = ""' main.go
+    sed -i '/trimmedSubpath = ""/a \\t\ttrimmedSubpath = subpath' main.go
+    sed -i '/trimmedSubpath = ""/a \\t} else {' main.go
+    sed -i '/^\t\ttrimmedSubpath = subpath/a \\t}' main.go
     sed -i '/^\tlog.Printf("Listening on/a \\tlog.Printf("URL path: %s", subpath)' main.go
-    sed -i '/FileServerFS/a mux.Handle(subpath+"/", http.StripPrefix(subpath, fs))' main.go 
-    sed -i '/FileServerFS/a fs := http.FileServer(http.FS(staticFS))' main.go
+    sed -i '/FileServerFS/a \\tmux.Handle(subpath+"/", http.StripPrefix(subpath, fs))' main.go 
+    sed -i '/FileServerFS/a \\tfs := http.FileServer(http.FS(staticFS))' main.go
     sed -i '/FIleServerFS/d' main.go
     sed -i "s|=\"/\([^>]\)|=\"${path%/}/\1|g" static/index.html
     sed -i "s|\(const res = await fetch(.\)/|\1${path%/}/|g" static/js/lang.js
