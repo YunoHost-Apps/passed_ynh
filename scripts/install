@@ -29,7 +29,7 @@ chown -R "$app:www-data" "$install_dir"
 #=================================================
 # BUILD APP
 #=================================================
-ynh_script_progression "Set build environment..."
+ynh_script_progression "Setting build environment..."
 ynh_go_install 
 
 ynh_script_progression "Building $app..."
@@ -48,9 +48,9 @@ pushd $install_dir/build/
     sed -i 's|"GET /api/password/{id}"|"GET " + trimmedSubpath + "/api/password/{id}"|g' main.go                        # prepend trimmedSubpath to app's get_password route
     sed -i 's|"HEAD /api/password/{id}"|"HEAD " + trimmedSubpath + "/api/password/{id}"|g' main.go                      # prepend trimmedSubpath to app's has_password route
     sed -i '/^\tlog.Printf("Listening on/a \\tlog.Printf("URL path: %s", subpath)' main.go                              # print subpath value in app's debug log
-    sed -i '/FileServerFS/a \\tmux.Handle(trimmedSubpath + "/", http.StripPrefix(trimmedSubpath, fs))' main.go          # handle subpath in static files routing 
-    sed -i '/FileServerFS/a \\tfs := http.FileServer(http.FS(staticFS))' main.go                                        # handle subpath in static files routing
-    sed -i '/FIleServerFS/d' main.go                                                                                    # remove original static file serving method which fails at handling subpath 
+    #~ sed -i '/FileServerFS/a \\tmux.Handle(trimmedSubpath + "/", http.StripPrefix(trimmedSubpath, fs))' main.go       # handle subpath in static files routing 
+    #~ sed -i '/FileServerFS/a \\tfs := http.FileServer(http.FS(staticFS))' main.go                                     # handle subpath in static files routing
+    #~ sed -i '/FIleServerFS/d' main.go                                                                                 # remove original static file serving method which fails at handling subpath 
     sed -i "s|=\"/\([^>]\)|=\"\1|g" static/index.html                                                                   # make assets paths relative in static files
     sed -i "s|\(const res = await fetch(.\)/|\1|g" static/js/lang.js                                                    # //
     sed -i "s|\(const res = await fetch(.\)/|\1|g" static/js/api.js                                                     # //  
