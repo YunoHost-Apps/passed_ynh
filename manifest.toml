@@ -13,7 +13,6 @@ maintainers = ["oleole39"]
 
 [upstream]
 license = "MPL-2.0"
-website = "https://git.1e99.eu/1e99/passed"
 admindoc = "https://git.1e99.eu/1e99/passed/src/branch/main/README.md#configuration"
 userdoc = "https://git.1e99.eu/1e99/passed/src/branch/main/README.md#how-it-works"
 code = "https://git.1e99.eu/1e99/passed"
@@ -56,15 +55,12 @@ ram.runtime = "50M"
     [resources.system_user]
 
     [resources.install_dir]
-    # This will create/remove the install dir as /var/www/$app
-    # and store the corresponding setting $install_dir
 
     [resources.data_dir]
-    # This will create/remove the data dir as /home/yunohost.app/$app
-    # and store the corresponding setting $data_dir
+    # Use $data_dir to store passwords' decryption keys
 
     [resources.permissions]
     main.url = "/"
 
     [resources.ports]
-    # This will pick a random port for reverse-proxying and store it as the $port setting
+    # $port is passed to the app via an environment variable defined in $install_dir/.env
