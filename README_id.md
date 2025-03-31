@@ -32,7 +32,6 @@ The password is contained in the URL itself as an encrypted string whereas the d
 ## Dokumentasi dan sumber daya
 
 - Dokumentasi pengguna resmi: <https://git.1e99.eu/1e99/passed/src/branch/main/README.md#how-it-works>
-- Dokumentasi admin resmi: <https://git.1e99.eu/1e99/passed/src/branch/main/README.md#configuration>
 - Depot kode aplikasi hulu: <https://git.1e99.eu/1e99/passed>
 - Gudang YunoHost: <https://apps.yunohost.org/app/passed>
 - Laporkan bug: <https://github.com/YunoHost-Apps/passed_ynh/issues>

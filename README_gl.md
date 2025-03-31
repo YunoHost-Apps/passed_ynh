@@ -32,7 +32,6 @@ The password is contained in the URL itself as an encrypted string whereas the d
 ## Documentación e recursos
 
 - Documentación oficial para usuarias: <https://git.1e99.eu/1e99/passed/src/branch/main/README.md#how-it-works>
-- Documentación oficial para admin: <https://git.1e99.eu/1e99/passed/src/branch/main/README.md#configuration>
 - Repositorio de orixe do código: <https://git.1e99.eu/1e99/passed>
 - Tenda YunoHost: <https://apps.yunohost.org/app/passed>
 - Informar dun problema: <https://github.com/YunoHost-Apps/passed_ynh/issues>
