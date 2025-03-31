@@ -15,7 +15,7 @@ passed_max_length=12288
 ynh_app_setting_set --key=passed_max_length --value=$passed_max_length
 
 passed_store_clear_interval=300
-ynh_app_setting_set --key=passed_store_clear_interval --value=$clear_interval
+ynh_app_setting_set --key=passed_store_clear_interval --value=$passed_store_clear_interval
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
