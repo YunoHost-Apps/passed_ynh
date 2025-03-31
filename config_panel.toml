@@ -13,7 +13,7 @@ name.fr = "Configuration principale"
  
         [main.administration.passed_max_length]
         ask.en = "Max password length (bytes)"
-        ask.fr = "Taille maximale des mots de passe (octet)"
+        ask.fr = "Taille maximale des mots de passe (octets)"
         type = "number"
         bind = ":__INSTALL_DIR__/.env"
         help.en = "Default setting = 12288 (=12kb)"
