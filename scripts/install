@@ -29,10 +29,9 @@ chown -R "$app:www-data" "$install_dir"
 #=================================================
 # BUILD APP
 #=================================================
-ynh_script_progression "Building $app..."
-
 ynh_go_install 
 
+ynh_script_progression "Building $app..."
 pushd $install_dir/build/
     # Tweak upstream code to add support for subpath install via creation of PASSED_SUBPATH env variable (defaulting to "/")
     sed -i '/^\tvar address string/i \\tvar subpath string' main.go                                                     # declare subpath var
@@ -41,8 +40,8 @@ pushd $install_dir/build/
     sed -i '/handler := http\.Handler(mux)/a \\tif subpath == "\/" {' main.go                                           # define trimmedSubpath:
     sed -i '/^\tif subpath == "\/"/a \\t\ttrimmedSubpath = ""' main.go                                                  #   if subpath="/" then trimmedSubpath=""
     sed -i '/trimmedSubpath = ""/a \\t\ttrimmedSubpath = subpath' main.go                                               #   if subpath="/anything" then trimmedSubpath="/anything"
-    sed -i '/trimmedSubpath = ""/a \\t} else {' main.go                                                                 # //
-    sed -i '/^\t\ttrimmedSubpath = subpath/a \\t}' main.go                                                              # //
+    sed -i '/trimmedSubpath = ""/a \\t} else {' main.go                                                                 #   //
+    sed -i '/^\t\ttrimmedSubpath = subpath/a \\t}' main.go                                                              #   //
     sed -i 's|"GET /"|"GET "+ subpath|g' main.go                                                                        # prepend subpath to app's landing page route
     sed -i 's|"POST /api/password"|"POST " + trimmedSubpath + "/api/password"|g' main.go                                # prepend trimmedSubpath to app's create_password route
     sed -i 's|"GET /api/password/{id}"|"GET " + trimmedSubpath + "/api/password/{id}"|g' main.go                        # prepend trimmedSubpath to app's get_password route
@@ -51,20 +50,21 @@ pushd $install_dir/build/
     sed -i '/FileServerFS/a \\tmux.Handle(trimmedSubpath + "/", http.StripPrefix(trimmedSubpath, fs))' main.go          # handle subpath in static files routing 
     sed -i '/FileServerFS/a \\tfs := http.FileServer(http.FS(staticFS))' main.go                                        # handle subpath in static files routing
     sed -i '/FIleServerFS/d' main.go                                                                                    # remove original static file serving method which fails at handling subpath 
-    sed -i "s|=\"/\([^>]\)|=\"\1|g" static/index.html                                                                   # make link to subpath relative 
-    sed -i "s|\(const res = await fetch(.\)/|\1|g" static/js/lang.js                                                    # make link to subpath relative
-    sed -i "s|\(const res = await fetch(.\)/|\1|g" static/js/api.js                                                     # make link to subpath relative  
+    sed -i "s|=\"/\([^>]\)|=\"\1|g" static/index.html                                                                   # make assets paths relative in static files
+    sed -i "s|\(const res = await fetch(.\)/|\1|g" static/js/lang.js                                                    # //
+    sed -i "s|\(const res = await fetch(.\)/|\1|g" static/js/api.js                                                     # //  
 
     # Build
     ynh_hide_warnings ynh_exec_as_app go build -o $install_dir/
 popd
 
+chmod +x "$install_dir/passed"
+
+ynh_script_progression "Cleaning folders after build..."
 ynh_go_remove
 ynh_safe_rm "$install_dir/build/"
 ynh_safe_rm "$install_dir/.cache/"
 ynh_safe_rm "$install_dir/.config/"
-
-chmod +x "$install_dir/passed"
 
 #=================================================
 # SYSTEM CONFIGURATION
