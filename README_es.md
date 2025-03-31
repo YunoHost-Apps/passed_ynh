@@ -3,7 +3,7 @@ Este archivo README esta generado automaticamente<https://github.com/YunoHost/ap
 No se debe editar a mano.
 -->
 
-# PassED para Yunohost
+# PassED para YunoHost
 
 [![Nivel de integración](https://apps.yunohost.org/badge/integration/passed)](https://ci-apps.yunohost.org/ci/apps/passed/)
 ![Estado funcional](https://apps.yunohost.org/badge/state/passed)

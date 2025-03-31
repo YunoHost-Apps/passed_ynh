@@ -41,7 +41,7 @@ The password is contained in the URL itself as an encrypted string whereas the d
 
 Bidali `pull request`a [`testing` abarrera](https://github.com/YunoHost-Apps/passed_ynh/tree/testing).
 
-`testing` abarra probatzeko, ondorengoa egin:
+`testing` abarra probatzeko, honakoa egin:
 
 ```bash
 sudo yunohost app install https://github.com/YunoHost-Apps/passed_ynh/tree/testing --debug
