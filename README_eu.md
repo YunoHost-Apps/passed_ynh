@@ -18,9 +18,9 @@ EZ editatu eskuz.
 
 ## Aurreikuspena
 
-Share a password with someone securely by generating single-use URLs so that it doesn't logged in a mailbox, shown in a messenger app's notification, etc. 
+Share a password with someone securely by generating single-use URLs so that it doesn't get logged in a mailbox, shown in a messenger app's notification, etc. 
 
-The password is contained in the URL itself in an encrypted form whereas the decryption key stored on the server is deleted after first use or selected timeframe. 
+The password is contained in the URL itself as an encrypted string whereas the decryption key stored on the server is deleted after first use or selected timeframe. 
 
 
 **Paketatutako bertsioa:** 2024.12.29~ynh1
@@ -31,7 +31,6 @@ The password is contained in the URL itself in an encrypted form whereas the dec
 
 ## Dokumentazioa eta baliabideak
 
-- Aplikazioaren webgune ofiziala: <https://git.1e99.eu/1e99/passed>
 - Erabiltzaileen dokumentazio ofiziala: <https://git.1e99.eu/1e99/passed/src/branch/main/README.md#how-it-works>
 - Administratzaileen dokumentazio ofiziala: <https://git.1e99.eu/1e99/passed/src/branch/main/README.md#configuration>
 - Jatorrizko aplikazioaren kode-gordailua: <https://git.1e99.eu/1e99/passed>
@@ -42,7 +41,7 @@ The password is contained in the URL itself in an encrypted form whereas the dec
 
 Bidali `pull request`a [`testing` abarrera](https://github.com/YunoHost-Apps/passed_ynh/tree/testing).
 
-`testing` abarra probatzeko, ondorengoa egin:
+`testing` abarra probatzeko, honakoa egin:
 
 ```bash
 sudo yunohost app install https://github.com/YunoHost-Apps/passed_ynh/tree/testing --debug

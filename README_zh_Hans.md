@@ -18,9 +18,9 @@
 
 ## 概况
 
-Share a password with someone securely by generating single-use URLs so that it doesn't logged in a mailbox, shown in a messenger app's notification, etc. 
+Share a password with someone securely by generating single-use URLs so that it doesn't get logged in a mailbox, shown in a messenger app's notification, etc. 
 
-The password is contained in the URL itself in an encrypted form whereas the decryption key stored on the server is deleted after first use or selected timeframe. 
+The password is contained in the URL itself as an encrypted string whereas the decryption key stored on the server is deleted after first use or selected timeframe. 
 
 
 **分发版本：** 2024.12.29~ynh1
@@ -31,7 +31,6 @@ The password is contained in the URL itself in an encrypted form whereas the dec
 
 ## 文档与资源
 
-- 官方应用网站： <https://git.1e99.eu/1e99/passed>
 - 官方用户文档： <https://git.1e99.eu/1e99/passed/src/branch/main/README.md#how-it-works>
 - 官方管理文档： <https://git.1e99.eu/1e99/passed/src/branch/main/README.md#configuration>
 - 上游应用代码库： <https://git.1e99.eu/1e99/passed>
