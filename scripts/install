@@ -28,8 +28,17 @@ ynh_go_install
 ls -la $install_dir
 
 pushd $install_dir/build/
-    # Tweak to support subpath install
-    sed -ri "s|(mux.Handle\(\"GET /)|\1$path/|g" main.go
+    # Tweak upstream code to add support for subpath install with PASSED_SUBPATH env variable (defaulting to "/")
+    sed -i '/^import (/a \\t"fmt"' main.go #add fmt module import
+    sed -i '/env("PASSED_ADDRESS", &address, ":3000")/i \\tenv("PASSED_SUBPATH", &subpath, "/")' main.go 
+    sed -i '/handler := http\.Handler(mux)/a \\tstr_get_root := fmt.Sprintf("GET %d", subpath)' main.go
+    sed -i '/str_get_root :=/a \\tstr_post_api_pw := fmt.Sprintf("POST %dapi/password", subpath)' main.go
+    sed -i '/str_post_api_pw :=/a \\tstr_get_api_pw_id := fmt.Sprintf("GET %dapi/password/{id}", subpath)' main.go
+    sed -i '/str_get_api_pw_id :=/a \\tstr_head_api_pw_id := fmt.Sprintf("HEAD %dapi/password/{id}", subpath)' main.go
+    sed -i 's/"GET \/"/str_get_root/g' main.go
+    sed -i 's/"POST \/api\/password"/str_post_api_pw/g' main.go 
+    sed -i 's/"GET \/api\/password\/{id}"/str_get_api_pw_id/g' main.go 
+    sed -i 's/"HEAD \/api\/password\/{id}"/str_head_api_pw_id/g' main.go 
 
     # Build
 	ynh_hide_warnings ynh_exec_as_app go build -o $install_dir/
