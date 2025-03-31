@@ -30,9 +30,9 @@ pushd $install_dir/build/
     sed -i '/^\tvar subpath string/i \\tvar trimmedSubpath string' main.go
     sed -i '/env("PASSED_ADDRESS", &address, ":3000")/i \\tenv("PASSED_SUBPATH", &subpath, "/")' main.go 
     sed -i '/handler := http\.Handler(mux)/a \\tstrGetRoot := fmt.Sprintf("GET %d", subpath)' main.go
-    sed -i '/strGetRoot :=/a \\tstrPostApiPw := fmt.Sprintf("POST %d/api/password", subpath)' main.go
-    sed -i '/strPostApiPw :=/a \\tstrGetApiPwId := fmt.Sprintf("GET %d/api/password/{id}", subpath)' main.go
-    sed -i '/strGetApiPwId :=/a \\tstrHeadApiPwId := fmt.Sprintf("HEAD %d/api/password/{id}", subpath)' main.go
+    sed -i '/strGetRoot :=/a \\tstrPostApiPw := fmt.Sprintf("POST %d/api/password", trimmedSubpath)' main.go
+    sed -i '/strPostApiPw :=/a \\tstrGetApiPwId := fmt.Sprintf("GET %d/api/password/{id}", trimmedSubpath)' main.go
+    sed -i '/strGetApiPwId :=/a \\tstrHeadApiPwId := fmt.Sprintf("HEAD %d/api/password/{id}", trimmedSubpath)' main.go
     sed -i 's/"GET \/"/strGetRoot/g' main.go
     sed -i 's/"POST \/api\/password"/strPostApiPw/g' main.go 
     sed -i 's/"GET \/api\/password\/{id}"/strGetApiPwId/g' main.go 
