@@ -33,9 +33,9 @@ pushd $install_dir/build/
     sed -i '/^\tvar address string/i \\tvar subpath string' main.go 
     sed -i '/env("PASSED_ADDRESS", &address, ":3000")/i \\tenv("PASSED_SUBPATH", &subpath, "/")' main.go 
     sed -i '/handler := http\.Handler(mux)/a \\tstr_get_root := fmt.Sprintf("GET %d", subpath)' main.go
-    sed -i '/str_get_root :=/a \\tstr_post_api_pw := fmt.Sprintf("POST %dapi/password", subpath)' main.go
-    sed -i '/str_post_api_pw :=/a \\tstr_get_api_pw_id := fmt.Sprintf("GET %dapi/password/{id}", subpath)' main.go
-    sed -i '/str_get_api_pw_id :=/a \\tstr_head_api_pw_id := fmt.Sprintf("HEAD %dapi/password/{id}", subpath)' main.go
+    sed -i '/str_get_root :=/a \\tstr_post_api_pw := fmt.Sprintf("POST %d/api/password", subpath)' main.go
+    sed -i '/str_post_api_pw :=/a \\tstr_get_api_pw_id := fmt.Sprintf("GET %d/api/password/{id}", subpath)' main.go
+    sed -i '/str_get_api_pw_id :=/a \\tstr_head_api_pw_id := fmt.Sprintf("HEAD %d/api/password/{id}", subpath)' main.go
     sed -i 's/"GET \/"/str_get_root/g' main.go
     sed -i 's/"POST \/api\/password"/str_post_api_pw/g' main.go 
     sed -i 's/"GET \/api\/password\/{id}"/str_get_api_pw_id/g' main.go 
@@ -50,6 +50,8 @@ ls -la $install_dir
 
 ynh_go_remove
 ynh_safe_rm "$install_dir/build/"
+ynh_safe_rm "$install_dir/.cache/"
+ynh_safe_rm "$install_dir/.config/"
 
 chmod +x "$install_dir/passed"
 
@@ -74,15 +76,6 @@ ynh_config_add_logrotate
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-### `ynh_systemctl` is used to start a systemd service for an app.
-### Only needed if you have configure a systemd service
-### If you're not using these lines:
-###   - Remove the section "STOP SYSTEMD SERVICE" and "START SYSTEMD SERVICE" in the backup script
-###   - As well as the section "START SYSTEMD SERVICE" in the restore script
-###   - As well as the section"STOP SYSTEMD SERVICE" and "START SYSTEMD SERVICE" in the upgrade script
-###   - And the section "STOP SYSTEMD SERVICE" and "START SYSTEMD SERVICE" in the change_url script
-
-# Start a systemd service
 ynh_systemctl --service="$app" --action="start"
 
 #=================================================
