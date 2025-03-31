@@ -28,8 +28,9 @@ ynh_go_install
 ls -la $install_dir
 
 pushd $install_dir/build/
-    # Tweak upstream code to add support for subpath install with PASSED_SUBPATH env variable (defaulting to "/")
+    # Tweak upstream code to add support for subpath install via creation of PASSED_SUBPATH env variable (defaulting to "/")
     sed -i '/^import (/a \\t"fmt"' main.go #add fmt module import
+    sed -i '/^\tvar address string/i \\tvar subpath string' main.go 
     sed -i '/env("PASSED_ADDRESS", &address, ":3000")/i \\tenv("PASSED_SUBPATH", &subpath, "/")' main.go 
     sed -i '/handler := http\.Handler(mux)/a \\tstr_get_root := fmt.Sprintf("GET %d", subpath)' main.go
     sed -i '/str_get_root :=/a \\tstr_post_api_pw := fmt.Sprintf("POST %dapi/password", subpath)' main.go
