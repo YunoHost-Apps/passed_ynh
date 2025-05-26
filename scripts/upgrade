@@ -50,8 +50,8 @@ pushd $install_dir/build/
     sed -i '/FileServerFS/a \\tfs := http.FileServer(http.FS(staticFS))' main.go                                        # handle subpath in static files routing
     sed -i '/FIleServerFS/d' main.go                                                                                    # remove original static file serving method which fails at handling subpath 
     sed -i "s|=\"/\([^>]\)|=\"\1|g" static/index.html                                                                   # make assets paths relative in static files
-    sed -i "s|\(const res = await fetch(.\)/|\1|g" static/js/lang.js                                                    # //
-    sed -i "s|\(const res = await fetch(.\)/|\1|g" static/js/api.js                                                     # //  
+    sed -i "s|\(const f = await fetch(.\)/|\1|g" static/js/lang.js                                                      # //
+    sed -i "s|\(const res = await fetch(.\)/|\1|g" static/js/backend.js                                                 # //  
 
     # Build
 	ynh_hide_warnings ynh_exec_as_app go build -o $install_dir/
