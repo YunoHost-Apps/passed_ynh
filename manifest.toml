@@ -7,7 +7,7 @@ name = "PassED"
 description.en = "Share a password with someone securely by generating a single-use URL."
 description.fr = "Partagez un mot de passe de façon sécurisée en générant une URL à usage unique."
 
-version = "2025.05.24~ynh1"
+version = "2025.08.19~ynh1"
 
 maintainers = ["oleole39"]
 
@@ -46,8 +46,8 @@ ram.runtime = "20M"
     [resources.sources]
 
     [resources.sources.main]
-    url = "https://git.1e99.eu/1e99/passed/archive/7992f2bfca48785c5d9c8a5310b1dac6be8f1fd6.tar.gz"
-    sha256 = "c7cefebdcfc8ffd3e7cac26027de030cb78751ef913f7650f6ea80e1a8bbb5b5"
+    url = "https://git.1e99.eu/1e99/passed/archive/87afa8b8dc7eab1b63fc6aea1d1473b22ba73034.tar.gz"
+    sha256 = "6c52a7a7979219126709c8fbe94d6bd3e0f4773cf6ac561534ca4d5df73dff86"
     autoupdate.strategy = "latest_forgejo_commit"
 
     [resources.system_user]
