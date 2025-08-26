@@ -10,12 +10,16 @@ It shall NOT be edited by hand.
 
 Share a password with someone securely by generating a single-use URL.
 
-[![Version: 2025.05.24~ynh1](https://img.shields.io/badge/Version-2025.05.24~ynh1-rgba(0,150,0,1)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/passed/)
+[![Version: 2025.08.19~ynh1](https://img.shields.io/badge/Version-2025.08.19~ynh1-rgb(18,138,11)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/passed/)
 
 <div align="center">
 <a href="https://apps.yunohost.org/app/passed"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_more_info_on_the_appstore.svg"/></a>
 <a href="https://github.com/YunoHost-Apps/passed_ynh/issues"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_report_an_issue.svg"/></a>
 </div>
+
+
+## Screenshots
+![Screenshot of PassED](./doc/screenshots/passed_ynh.png)
 
 ## 📦 Developer info
 
