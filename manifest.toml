@@ -17,7 +17,7 @@ userdoc = "https://git.1e99.eu/1e99/passed/src/branch/main/README.md#how-it-work
 code = "https://git.1e99.eu/1e99/passed"
 
 [integration]
-yunohost = ">= 12.0.9"
+yunohost = ">= 12.1.17"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
@@ -62,3 +62,6 @@ ram.runtime = "20M"
 
     [resources.ports]
     # $port is passed to the app via an environment variable defined in $install_dir/.env
+
+    [resources.go]
+    version = "1.24.2"

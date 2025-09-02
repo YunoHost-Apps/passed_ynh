@@ -4,7 +4,7 @@
 # IMPORT GENERIC HELPERS
 #=================================================
 
-source _common.sh
+
 source /usr/share/yunohost/helpers
 
 #=================================================
@@ -28,7 +28,7 @@ chown -R "$app:www-data" "$install_dir"
 # BUILD APP
 #=================================================
 ynh_script_progression "Setting build environment..."
-ynh_go_install 
+#REMOVEME? ynh_go_install 
 
 ynh_script_progression "Building $app..."
 pushd $install_dir/build/
@@ -60,7 +60,7 @@ popd
 chmod +x "$install_dir/passed"
 
 ynh_script_progression "Cleaning folders after build..."
-ynh_go_remove
+#REMOVEME? ynh_go_remove
 ynh_safe_rm "$install_dir/build/"
 ynh_safe_rm "$install_dir/.cache/"
 ynh_safe_rm "$install_dir/.config/"
