@@ -4,8 +4,8 @@ packaging_format = 2
 
 id = "passed"
 name = "PassED"
-description.en = "Share a password with someone securely by generating a single-use URL."
-description.fr = "Partagez un mot de passe de façon sécurisée en générant une URL à usage unique."
+description.en = "Share a password with someone securely by generating a single-use URL"
+description.fr = "Partagez un mot de passe de façon sécurisée en générant une URL à usage unique"
 
 version = "2025.09.14~ynh1"
 
