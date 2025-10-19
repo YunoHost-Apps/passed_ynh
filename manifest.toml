@@ -4,10 +4,10 @@ packaging_format = 2
 
 id = "passed"
 name = "PassED"
-description.en = "Share a password with someone securely by generating a single-use URL."
-description.fr = "Partagez un mot de passe de façon sécurisée en générant une URL à usage unique."
+description.en = "Share a password with someone securely by generating a single-use URL"
+description.fr = "Partagez un mot de passe de façon sécurisée en générant une URL à usage unique"
 
-version = "2025.08.19~ynh1"
+version = "2025.09.14~ynh1"
 
 maintainers = ["oleole39"]
 
@@ -17,7 +17,7 @@ userdoc = "https://git.1e99.eu/1e99/passed/src/branch/main/README.md#how-it-work
 code = "https://git.1e99.eu/1e99/passed"
 
 [integration]
-yunohost = ">= 12.0.9"
+yunohost = ">= 12.1.17"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
@@ -46,8 +46,8 @@ ram.runtime = "20M"
     [resources.sources]
 
     [resources.sources.main]
-    url = "https://git.1e99.eu/1e99/passed/archive/87afa8b8dc7eab1b63fc6aea1d1473b22ba73034.tar.gz"
-    sha256 = "6c52a7a7979219126709c8fbe94d6bd3e0f4773cf6ac561534ca4d5df73dff86"
+    url = "https://git.1e99.eu/1e99/passed/archive/27ebba1de4d030a9403c25aa123c4d0f4acf47ee.tar.gz"
+    sha256 = "c987b6044a7dff0413a81e8b1e0ade42a715b246e87c490307fceb10bea16083"
     autoupdate.strategy = "latest_forgejo_commit"
 
     [resources.system_user]
@@ -62,3 +62,6 @@ ram.runtime = "20M"
 
     [resources.ports]
     # $port is passed to the app via an environment variable defined in $install_dir/.env
+
+    [resources.go]
+    version = "1.24.2"

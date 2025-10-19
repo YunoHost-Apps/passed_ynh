@@ -4,7 +4,6 @@
 # IMPORT GENERIC HELPERS
 #=================================================
 
-source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
@@ -24,13 +23,10 @@ ynh_script_progression "Setting up source files..."
 
 ynh_setup_source --dest_dir="$install_dir/build"
 
-chown -R "$app:www-data" "$install_dir"
-
 #=================================================
 # BUILD APP
 #=================================================
 ynh_script_progression "Setting build environment..."
-ynh_go_install 
 
 ynh_script_progression "Building $app..."
 pushd $install_dir/build/
@@ -62,7 +58,6 @@ popd
 chmod +x "$install_dir/passed"
 
 ynh_script_progression "Cleaning folders after build..."
-ynh_go_remove
 ynh_safe_rm "$install_dir/build/"
 ynh_safe_rm "$install_dir/.cache/"
 ynh_safe_rm "$install_dir/.config/"
@@ -78,6 +73,7 @@ ynh_config_add_nginx
 # Create a dedicated systemd config
 ynh_config_add --template=".env" --destination="$install_dir/.env"
 ynh_config_add_systemd
+
 yunohost service add "$app" --description="PassED, share a password securely" --log="/var/log/$app/$app.log"
 
 # Use logrotate to manage application logfile(s)
