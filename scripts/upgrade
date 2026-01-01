@@ -27,7 +27,6 @@ chown -R $app:$app "$install_dir" #set permissions after $install_dir is created
 # BUILD APP
 #=================================================
 ynh_script_progression "Setting build environment..."
-#REMOVEME? ynh_go_install 
 
 ynh_script_progression "Building $app..."
 pushd $install_dir/build/
