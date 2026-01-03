@@ -7,7 +7,7 @@ name = "PassED"
 description.en = "Share a password with someone securely by generating a single-use URL"
 description.fr = "Partagez un mot de passe de façon sécurisée en générant une URL à usage unique"
 
-version = "2025.09.14~ynh1"
+version = "2025.09.14~ynh2"
 
 maintainers = ["oleole39"]
 
