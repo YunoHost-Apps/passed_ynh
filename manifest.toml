@@ -55,7 +55,7 @@ ram.runtime = "20M"
         [resources.sources.ynh_build]
         url = "https://github.com/YunoHost-Apps/passed_ynh/releases/download/v2025.09.14/passed"
         sha256 = "ec55f31bc0b9a011b7d8b5dbc807a68ccef7b87a043584cd97c2f4324346698b"
-        format = "binary"
+        format = "whatever"
         extract = false
         in_subdir = false
         rename = "passed"
