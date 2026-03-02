@@ -45,10 +45,20 @@ ram.runtime = "20M"
 
     [resources.sources]
 
-    [resources.sources.main]
-    url = "https://git.1e99.eu/1e99/passed/archive/27ebba1de4d030a9403c25aa123c4d0f4acf47ee.tar.gz"
-    sha256 = "c987b6044a7dff0413a81e8b1e0ade42a715b246e87c490307fceb10bea16083"
-    autoupdate.strategy = "latest_forgejo_commit"
+        [resources.sources.main]
+        # This is not used as we are using git clone. It's only here for autoupdate.
+        url = "https://git.1e99.eu/1e99/passed/archive/27ebba1de4d030a9403c25aa123c4d0f4acf47ee.tar.gz"
+        sha256 = "c987b6044a7dff0413a81e8b1e0ade42a715b246e87c490307fceb10bea16083"
+        prefetch = false
+        autoupdate.strategy = "latest_forgejo_commit"
+
+        [resources.sources.ynh_build]
+        url = "https://github.com/YunoHost-Apps/passed_ynh/releases/download/v2025.09.14/passed"
+        sha256 = "ec55f31bc0b9a011b7d8b5dbc807a68ccef7b87a043584cd97c2f4324346698b"
+        format = "whatever"
+        extract = false
+        in_subdir = false
+        rename = "passed"
 
     [resources.system_user]
 
@@ -62,6 +72,3 @@ ram.runtime = "20M"
 
     [resources.ports]
     # $port is passed to the app via an environment variable defined in $install_dir/.env
-
-    [resources.go]
-    version = "1.24.2"
